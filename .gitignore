@@ -1,0 +1,4 @@
+# Project exclude paths
+/selenium/.gradle/
+/selenium/build/
+/selenium/build/classes/java/test/
