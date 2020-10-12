@@ -24,6 +24,7 @@ public class FirstTest {
         driver.get("http://www.google.com/");
         driver.findElement(By.name("q")).sendKeys("speedtest");
         driver.findElement(By.name("btnI")).click();
+        driver.quit();
     }
 
 
