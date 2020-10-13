@@ -14,7 +14,7 @@ public class FirstTest {
 
     @Before
     public void start(){
-        System.setProperty("webdriver.chrome.driver", "C:\\Tools\\chromedriver.exe");
+//        System.setProperty("webdriver.chrome.driver", "C:\\Tools\\chromedriver.exe");
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver, 10);
     }
