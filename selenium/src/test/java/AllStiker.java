@@ -40,22 +40,19 @@ public class AllStiker {
         new WebDriverWait(driver, 30).until(
                 webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
 
-        List<WebElement> mostPop = driver.findElements(By.xpath("//div[@id = 'box-most-popular']//li"));
-        List<WebElement> campaign = driver.findElements(By.xpath("//div[@id = 'box-campaigns']//li"));
-        List<WebElement> latest = driver.findElements(By.xpath("//div[@id = 'box-latest-products']//li"));
-        sticKCheck(mostPop,"box-most-popular");
-        sticKCheck(campaign,"box-campaigns");
-        sticKCheck(latest,"box-latest-products");
+        sticKCheck("box-most-popular");
+        sticKCheck("box-campaigns");
+        sticKCheck("box-latest-products");
     }
 
-
-
-    public void sticKCheck(List list, String boxName) {
-        for (int i = 1; i <= list.size(); i++) {
-            List<WebElement> stikCount = driver.findElements(By.xpath("//div[@id = '" + boxName + "']//li[" + i + "][@class = 'product column shadow hover-light']//div[contains(@class, 'sticker')]"));
+    public void sticKCheck(String boxName) {
+        List<WebElement> prod = driver.findElements(By.xpath("//div[@id = '" + boxName + "']//li"));
+        for (int i = 1; i <= prod.size(); i++) {
+            List<WebElement> stikCount = driver.findElements(By.xpath("//div[@id = '" + boxName + "']//li[" + i + "][contains(@class, 'product')]//div[contains(@class, 'sticker')]"));
             assertTrue(stikCount.size() == 1);
         }
     }
+
     @After
     public void stop() {
         driver.quit();
