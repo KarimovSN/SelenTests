@@ -52,7 +52,7 @@ public class AllStiker {
 
     public void sticKCheck(List list, String boxName) {
         for (int i = 1; i <= list.size(); i++) {
-            List<WebElement> stikCount = driver.findElements(By.xpath("//div[@id = '" + boxName + "']//li[" + i + "]//div[contains(@class, 'sticker')]"));
+            List<WebElement> stikCount = driver.findElements(By.xpath("//div[@id = '" + boxName + "']//li[" + i + "][@class = 'product column shadow hover-light']//div[contains(@class, 'sticker')]"));
             assertTrue(stikCount.size() == 1);
         }
     }
