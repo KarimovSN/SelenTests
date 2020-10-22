@@ -33,8 +33,6 @@ public class CountriesSort {
     @Test
     public void sortCountries() {
         admLogin();
-        new WebDriverWait(driver, 30).until(
-                webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[text() = 'Countries']")));
         WebElement countriesMenu = driver.findElement(By.xpath("//span[text() = 'Countries']"));
         countriesMenu.click();
