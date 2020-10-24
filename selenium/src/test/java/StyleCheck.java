@@ -28,10 +28,6 @@ public class StyleCheck {
     private WebDriverWait wait;
     private WebDriverWait fullWait;
 
-//    private WebDriver chromedriver = new ChromeDriver();
-//    private WebDriver iedriver = new InternetExplorerDriver();
-//    private WebDriver ffdriver = new FirefoxDriver();
-
 
     @Before
     public void start() {
