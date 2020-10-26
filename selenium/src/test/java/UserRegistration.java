@@ -32,7 +32,7 @@ public class UserRegistration {
     }
 
     @Test
-    public void allStiker() {
+    public void userReg() {
 
         driver.get("http://localhost/litecart/en/");
         new WebDriverWait(driver, 30).until(
