@@ -78,6 +78,7 @@ public class StyleCheck {
 
             assertTrue(regPriceStyleMainPage.contains("line-through"));
             assertTrue(regPriceColorMainPage.contains("119, 119, 119"));
+            assertTrue(campPriceColorMainPage.contains("204, 0, 0"));
             assertEquals(campPriceFontSizeMainPage, "18px");
             assertTrue(campPriceFontWeightMainPage >= 700);
 
@@ -108,6 +109,7 @@ public class StyleCheck {
 
             assertTrue(regPriceStyleItemPage.contains("line-through"));
             assertTrue(regPriceColorItemPage.contains("102, 102, 102"));
+            assertTrue(campPriceColorItemPage.contains("204, 0, 0"));
             assertEquals(campPriceFontSizeItemPage, "22px");
             assertTrue(campPriceWeightItemPage >= 700);
 
