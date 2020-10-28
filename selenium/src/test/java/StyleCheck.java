@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
@@ -76,12 +77,24 @@ public class StyleCheck {
             String campPriceFontSizeMainPage = campaignPriceMainPage.getCssValue("font-size");
             int campPriceFontWeightMainPage = Integer.parseInt(campaignPriceMainPage.getCssValue("font-weight"));
 
+            String regPriceColor = Color.fromString(regPriceColorMainPage).asRgb();
+            int rRed = Integer.parseInt(regPriceColor.substring(4,7));
+            int rGreen = Integer.parseInt(regPriceColor.substring(9,12));
+            int rBlue = Integer.parseInt(regPriceColor.substring(14,17));
+
+            String campPriceColor = Color.fromString(campPriceColorMainPage).asRgb();
+            int cRed = Integer.parseInt(campPriceColor.substring(4,7));
+            int cGreen = Integer.parseInt(campPriceColor.substring(9,10));
+            int cBlue = Integer.parseInt(campPriceColor.substring(12,13));
+
             assertTrue(regPriceStyleMainPage.contains("line-through"));
-            assertTrue(regPriceColorMainPage.contains("119, 119, 119"));
-            assertTrue(campPriceColorMainPage.contains("204, 0, 0"));
             assertEquals(campPriceFontSizeMainPage, "18px");
             assertTrue(campPriceFontWeightMainPage >= 700);
-
+            assertEquals(rRed,rGreen);
+            assertEquals(rRed,rBlue);
+            assertTrue(cRed != 0);
+            assertTrue(cBlue == 0);
+            assertTrue(cGreen == 0);
 
             // itemPage
             driver.findElement(By.xpath("//div[@id = 'box-campaigns']//a[1]")).click();
@@ -108,13 +121,30 @@ public class StyleCheck {
             int campPriceWeightItemPage = Integer.parseInt(campaignPriceItemPage.getCssValue("font-weight"));
 
             assertTrue(regPriceStyleItemPage.contains("line-through"));
-            assertTrue(regPriceColorItemPage.contains("102, 102, 102"));
-            assertTrue(campPriceColorItemPage.contains("204, 0, 0"));
             assertEquals(campPriceFontSizeItemPage, "22px");
             assertTrue(campPriceWeightItemPage >= 700);
 
-            textAssertion(mainPageProducts, itemPageProducts);
+            String regPriceColorProductPage = Color.fromString(regPriceColorItemPage).asRgb();
+            int rRedProdPage = Integer.parseInt(regPriceColor.substring(4,7));
+            int rGreenProdPage = Integer.parseInt(regPriceColor.substring(9,12));
+            int rBlueProdPage = Integer.parseInt(regPriceColor.substring(14,17));
 
+            String campPriceColorProductPage = Color.fromString(campPriceColorItemPage).asRgb();
+            int cRedProdPage = Integer.parseInt(campPriceColor.substring(4,7));
+            int cGreenProdPage = Integer.parseInt(campPriceColor.substring(9,10));
+            int cBlueProdPage = Integer.parseInt(campPriceColor.substring(12,13));
+
+            assertTrue(regPriceStyleMainPage.contains("line-through"));
+            assertEquals(campPriceFontSizeMainPage, "18px");
+            assertTrue(campPriceFontWeightMainPage >= 700);
+            assertEquals(rRedProdPage,rGreenProdPage);
+            assertEquals(rRedProdPage,rBlueProdPage);
+            assertTrue(cRedProdPage != 0);
+            assertTrue(cGreenProdPage == 0);
+            assertTrue(cBlueProdPage == 0);
+
+
+            textAssertion(mainPageProducts, itemPageProducts);
             count = count + 1;
         }
     }
