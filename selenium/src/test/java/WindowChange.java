@@ -39,27 +39,12 @@ public class WindowChange {
         clickWaiter("//a[@class = 'button']/i");
         clicker("//a[@class = 'button']/i");
 
-        clickWaiter("//tr[1]//i[@class = 'fa fa-external-link']");
-        clicker("//tr[1]//i[@class = 'fa fa-external-link']");
-        switcher();
-        clickWaiter("//tr[3]//i[@class = 'fa fa-external-link']");
-        clicker("//tr[3]//i[@class = 'fa fa-external-link']");
-        switcher();
-        clickWaiter("//tr[6]//i[@class = 'fa fa-external-link']");
-        clicker("//tr[6]//i[@class = 'fa fa-external-link']");
-        switcher();
-        clickWaiter("//tr[7]//i[@class = 'fa fa-external-link']");
-        clicker("//tr[7]//i[@class = 'fa fa-external-link']");
-        switcher();
-        clickWaiter("//tr[8]//i[@class = 'fa fa-external-link']");
-        clicker("//tr[8]//i[@class = 'fa fa-external-link']");
-        switcher();
-        clickWaiter("//tr[9]//i[@class = 'fa fa-external-link']");
-        clicker("//tr[9]//i[@class = 'fa fa-external-link']");
-        switcher();
-        clickWaiter("//tr[10]//i[@class = 'fa fa-external-link']");
-        clicker("//tr[10]//i[@class = 'fa fa-external-link']");
-        switcher();
+        List<WebElement> elementList = driver.findElements(By.xpath("//tr//a[contains(@href, '')]/i[@class = 'fa fa-external-link']"));
+        for (int i = 1; i < elementList.size(); i++) {
+            elementList = driver.findElements(By.xpath("//tr//a[contains(@href, '')]/i[@class = 'fa fa-external-link']"));
+            elementList.get(i).click();
+            switcher();
+        }
     }
 
     public void switcher() {
